@@ -1,0 +1,61 @@
+<h1>Bank Transaction</h1>
+<form (ngSubmit)="!transForm.invalid && saveTransaction()" #transForm="ngForm">
+    <div class="container">
+        <fieldset class="form-group">
+            <label>Customer Number</label>
+            <input (blur)="fetchCustDetails()" type="number" [(ngModel)]="custJson.custNum" class="form-control" name="custNum" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Reference</label>
+            <input type="text" [(ngModel)]="custJson.reference" class="form-control" name="reference" required="required" ngModel maxlength="15">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Customer Name</label>
+            <input type="text" [(ngModel)]="custJson.custName" class="form-control" name="custName" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Customer Address</label>
+            <input type="text" [(ngModel)]="custJson.custAddress" class="form-control" name="custAddress" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Customer Phone Number</label>
+            <input type="number" [(ngModel)]="custJson.custPhoneNum" class="form-control" name="custPhoneNum" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Transfer Amount</label>
+            <input type="number" [(ngModel)]="custJson.transferAmount" class="form-control" name="transferAmount" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label>Transfer Currency</label>
+            <select class="form-control" name="transferCurrency" [(ngModel)]="custJson.transferCurrency" >
+                <option disabled>Choose Currency</option>
+                <option>AED</option>
+                <option>EUR</option>
+                <option>CHF</option>
+                <option>MUR</option>
+                <option>USD</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="benBank">Beneficiary Bank</label>
+            <input type="text" [(ngModel)]="custJson.beneficiaryBank" class="form-control" name="beneficiaryBank" required="required" pattern="[a-zA-Z][a-zA-Z ]+" #benBank="ngModel">
+        </fieldset>
+        <div [hidden]="benBank.valid || benBank.pristine" class="alert alert-danger">
+            <div [hidden]="!benBank.hasError('required')">Beneficiary Bank Name is required</div>
+            <div [hidden]="!benBank.hasError('pattern')">Enter atleast two characters and Only alphabets are allowed</div>
+        </div>
+        <fieldset class="form-group">
+            <label>Beneficiary Account Number</label>
+            <input type="number" [(ngModel)]="custJson.beneficiaryAccountNumber" class="form-control" name="beneficiaryAccountNumber" required="required">
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="payDet">Payment Details</label>
+            <input type="text" [(ngModel)]="custJson.paymentDetails" class="form-control" name="paymentDetails" required="required" pattern="[a-zA-Z][a-zA-Z ]+" #payDet="ngModel">
+            <div [hidden]="payDet.valid || payDet.pristine" class="alert alert-danger">
+                <div [hidden]="!payDet.hasError('required')">Beneficiary Bank Name is required</div>
+                <div [hidden]="!payDet.hasError('pattern')">Enter atleast two characters and Only alphabets are allowed</div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+</form>

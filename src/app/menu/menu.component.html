@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div>
+            <!-- <a href="https://www.google.com" class="navbar-brand">Todo's Management</a> -->
+            <span class="navbar-brand">Naveen's Application</span>
+        </div>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a routerLink="/welcome" class="nav-link" *ngIf="hcas.isUserLoggedIn()">Home</a></li>
+            <li><a routerLink="/login" class="nav-link" *ngIf="!hcas.isUserLoggedIn()">Login</a></li>
+            <li><a routerLink="/logout" class="nav-link" *ngIf="hcas.isUserLoggedIn()">Logout</a></li>
+        </ul>
+    </nav>
+</header>

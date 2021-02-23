@@ -1,0 +1,19 @@
+<h1 style="text-align:center">List of Transactions</h1> <br/><br/>
+<div class="container">
+    <table class="center">
+        <thead>
+            <th>Customer Name</th>
+            <th>Transfer Amount</th>
+            <th>Transfer Currency</th>
+            <th>Reference</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let trans of custTrans">
+                <td>{{trans.custName}}</td>
+                <td>{{trans.transferAmount}}</td>
+                <td>{{trans.transferCurrency}}</td>
+                <td>{{trans.reference}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
